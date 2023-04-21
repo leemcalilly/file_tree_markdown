@@ -1,4 +1,4 @@
-require 'file_tree_markdown_generator'
+require 'file_tree_markdown'
 require 'rails'
 
 module FileTreeMarkdown
@@ -6,7 +6,8 @@ module FileTreeMarkdown
     railtie_name :file_tree_markdown
 
     rake_tasks do
-      load 'tasks/file_tree_markdown.rake'
+      path = File.expand_path(__dir__)
+      Dir.glob("#{path}/tasks/**/*.rake").each { |f| load f }
     end
   end
 end
